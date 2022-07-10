@@ -30,7 +30,7 @@ The current implementation is logically flawed as the functions `fillSellOrder`,
 
 function [fillSellOrder](https://github.com/razzor-codes/Web3-Graveyard/blob/main/contracts/Quixotic/ExchangeV4.sol#L1630-L1679) first checks whether the buyer, the seller is targetting to trade the NFT has enough funds and has given enoug allowance to the Exchange.
 
-```
+```Solidity
 } else {
     _checkValidERC20Payment(buyer, price, paymentERC20);
 }
@@ -38,14 +38,14 @@ function [fillSellOrder](https://github.com/razzor-codes/Web3-Graveyard/blob/mai
 
 After which it makes sure that the order must not had cancelled as stated in the point 3 of Prerequisites
 
-```
+```Solidity
 require(
     cancellationRegistry.getSellOrderCancellationBlockNumber(seller, contractAddress, tokenId) < createdAtBlockNumber,
     "This order has been cancelled."
 );
 ```
 and then it moves to validate the signature
-```
+```Solidity
 function _validateSellerSignature(SellOrder memory sellOrder, bytes memory signature) internal view returns (bool) {
     bytes32 SELLORDER_TYPEHASH = keccak256(
         "SellOrder(address seller,address contractAddress,uint256 tokenId,uint256 startTime,uint256 expiration,uint256 price,uint256 quantity,uint256 createdAtBlockNumber,address paymentERC20)"
@@ -67,12 +67,12 @@ function _validateSellerSignature(SellOrder memory sellOrder, bytes memory signa
     return recoveredAddress == sellOrder.seller;
 ```
 If the signature is validated and matches the seller's address. The Exchange proceeds with transferring the NFT from the seller to buyer
-```
+```Solidity
 _transferNFT(sellOrder.contractAddress, sellOrder.tokenId, sellOrder.seller, buyer, sellOrder.quantity);
 ```
 
 and the approved funds from the buyer to the seller
-```
+```Solidity
 function _sendERC20PaymentsWithRoyalties(
     address contractAddress,
     address seller,
@@ -101,7 +101,7 @@ The buyer's permission/signature was nowhere involved, taking advantage of which
 
 Similarly function [fillBuyOrder](https://github.com/razzor-codes/Web3-Graveyard/blob/main/contracts/Quixotic/ExchangeV4.sol#L1686-L1724) only checks for the buyer's signature to execute a trade.
 
-```
+```Solidity
 function _validateBuyerSignature(BuyOrder memory buyOrder, bytes memory signature) internal view returns (bool) {
     bytes32 BUYORDER_TYPEHASH = keccak256(
         "BuyOrder(address buyer,address contractAddress,uint256 tokenId,uint256 startTime,uint256 expiration,uint256 price,uint256 quantity,address paymentERC20)"
