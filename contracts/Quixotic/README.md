@@ -1,6 +1,6 @@
 # Quixotic - Exploit Analysis
 
-[Quixotic](https://quixotic.io/) is one of the largest NFT marketplace on Optimism. On July 1 2022, a possible exploit was [reported by Apetimism](https://twitter.com/apetimism/status/1542743841735749632), which was later [confirmed by Quixotic](https://twitter.com/quixotic_io/status/1542790067130978307).
+[Quixotic](https://quixotic.io/) is one of the largest NFT marketplace on Optimism. On July 1 2022, a possible exploit was [reported by Apetimism](https://twitter.com/apetimism/status/1542743841735749632), which was later [confirmed by Quixotic](https://twitter.com/quixotic_io/status/1542790067130978307). [Over $100K was stolen](https://twitter.com/apetimism/status/1542746813748219905).
 
 The [ExchangeV4](https://optimistic.etherscan.io/address/0x065e8a87b8f11aed6facf9447abe5e8c5d7502b6#code) contract allows the sellers to trade their NFTs with ERC20 tokens approved by the buyers. The Sellers and Buyers have to approve their NFTs and ERC20 tokens respectively in order to allow the Exchange to trade them on the behalf of their respective owners.
 
