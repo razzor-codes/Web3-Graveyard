@@ -134,7 +134,7 @@ inp.oninput = function () {
 function getResults(input) {
   const results = [];
   for (i = 0; i < keys.length; i++) {
-    if (input === keys[i].slice(0, input.length)) {
+    if (input.trim().toLowerCase() === keys[i].slice(0, input.length)) {
       results.push(keys[i]);
     }
   }
