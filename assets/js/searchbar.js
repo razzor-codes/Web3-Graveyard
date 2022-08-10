@@ -144,4 +144,5 @@ nodes.onclick = function (event) {
   const setValue = event.target.innerText;
   inp.value = setValue;
   this.innerHTML = "";
+  nodes.style.borderLeft = 'none';
 };
