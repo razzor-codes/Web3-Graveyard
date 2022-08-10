@@ -7,6 +7,9 @@ const about_list = document.getElementById("about-list");
 const title = document.getElementById("project-title");
 const table = document.getElementById("showData");
 const add_note = document.getElementById("add_note");
+const inp = document.getElementById("q");
+const nodes = document.getElementById('nodes');
+
 elem.style.display = "none";
 footer.style.display = "none";
 about_list.style.display = "none";
@@ -19,7 +22,8 @@ fetch('assets/exploit-database.json')
      {
       attacks = data;
       keys = Object.keys(attacks);
-  })
+  });
+
 // const keys = Object.keys(attacks);
 input.addEventListener("focus", () => {
   finder.classList.add("active");
@@ -112,4 +116,32 @@ form.addEventListener("submit", (ev) => {
   }, 1000);
 });
 
+inp.oninput = function () {
+  let results = [];
+  const userInput = this.value;
+  nodes.innerHTML = "";
+  nodes.style.borderLeft = 'none';
+  if (userInput.length > 0) {
+    results = getResults(userInput);
+    nodes.style.display = "block";
+    for (i = 0; i < results.length; i++) {
+      nodes.innerHTML += "<li>" + results[i] + "</li>";
+      nodes.style.borderLeft = '5px solid red';
 
+    }
+  }
+};
+function getResults(input) {
+  const results = [];
+  for (i = 0; i < keys.length; i++) {
+    if (input === keys[i].slice(0, input.length)) {
+      results.push(keys[i]);
+    }
+  }
+  return results;
+}
+nodes.onclick = function (event) {
+  const setValue = event.target.innerText;
+  inp.value = setValue;
+  this.innerHTML = "";
+};

@@ -111,3 +111,11 @@ td{
 table tr:nth-child(even){background-color: #f2f2f2;}
 
 table tr:hover {background-color: #ddd;}
+#nodes{
+  margin-left: 2%;
+  cursor: pointer;
+  padding: 10px;
+  list-style-type: none;
+  font-size: 1.3rem;
+  width: 5rem;
+}

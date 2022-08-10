@@ -355,6 +355,10 @@ h6 {
     width: 100%;
   }
 
+  #hero #nodes{
+    text-align: left;
+  }
+
 
   #hero h1 {
     font-size: 32px;
