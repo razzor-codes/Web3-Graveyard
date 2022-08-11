@@ -66,13 +66,13 @@ function searchDatabase(input){
       let project_cont_keys = Object.keys(project_cont_values);
 
       for(let i=0 ; i<project_cont_keys.length; i++){
-        table.innerHTML += "<tr><td><b>&emsp;&emsp;&emsp;" + project_cont_keys[i] + "</b></td><td>"+ project_cont_values[project_cont_keys[i]] + "</td></tr>"
+        table.innerHTML += "<tr><td><b>&emsp;&emsp;" + project_cont_keys[i] + "</b></td><td>"+ project_cont_values[project_cont_keys[i]] + "</td></tr>"
       }
 
       table.innerHTML += 
 
-      "<tr><td><b>Postmortem</b></td><td> " + postmortem + "</td></tr>" +
-      "<tr><td><b>PoC</b></td><td><a href='" +  poc + "'/>" + poc + "</td></tr>" +
+      "<tr><td><b>Postmortem</b></td><td>" + postmortem + "</td></tr>" +
+      "<tr><td><b>PoC</b></td><td>" +  poc + "</td></tr>" +
       "<tr><td><b>Chain</b></td><td>" +  chain + "</td></tr>" +
       "<tr><td><b>BugType</b></td><td>" +  bugtype + "</td></tr>" + 
       "<tr><td><b>Project Type</b></td><td>" +  project_type + "</td></tr>" +
